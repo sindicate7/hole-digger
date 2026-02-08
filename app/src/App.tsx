@@ -27,10 +27,10 @@ function GameUI() {
     init()
   }, [])
 
-  const updateStats = (newDig: boolean, itemFound: boolean) => {
+  const updateStats = (newDig: boolean, itemFound: boolean, currentMaxDepth?: number) => {
     setPlayerStats(prev => ({
       totalDigs: prev.totalDigs + (newDig ? 1 : 0),
-      deepestHole: Math.max(prev.deepestHole, prev.totalDigs + 1),
+      deepestHole: Math.max(prev.deepestHole, currentMaxDepth || prev.deepestHole),
       itemsFound: prev.itemsFound + (itemFound ? 1 : 0),
       solSpent: prev.solSpent + (newDig ? 0.001 : 0)
     }))
@@ -64,8 +64,8 @@ function GameUI() {
             <span className="stat-value">{playerStats.totalDigs}</span>
           </div>
           <div className="stat-item">
-            <span className="stat-label">Deepest</span>
-            <span className="stat-value">{playerStats.deepestHole}</span>
+            <span className="stat-label">Deepest Hole</span>
+            <span className="stat-value">{playerStats.deepestHole}m ({(playerStats.deepestHole * 0.5).toFixed(1)}m deep)</span>
           </div>
           <div className="stat-item">
             <span className="stat-label">Items Found</span>

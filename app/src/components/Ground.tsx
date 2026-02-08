@@ -10,7 +10,7 @@ interface Hole {
 }
 
 interface GroundProps {
-  onDig?: (newDig: boolean, itemFound: boolean) => void
+  onDig?: (newDig: boolean, itemFound: boolean, currentMaxDepth?: number) => void
 }
 
 export function Ground({ onDig }: GroundProps) {
@@ -36,24 +36,25 @@ export function Ground({ onDig }: GroundProps) {
       
       if (existingHole) {
         // Dig deeper in existing hole
+        const newDepth = existingHole.depth + 1;
         const txSignature = await dig({ 
           x: existingHole.position.x, 
           z: existingHole.position.z 
-        })
+        }, newDepth)
         
         setHoles(prev => prev.map(hole => 
           hole.id === existingHole.id 
-            ? { ...hole, depth: hole.depth + 1 }
+            ? { ...hole, depth: newDepth }
             : hole
         ))
         
-        console.log(`⛏️ Dug deeper! New depth: ${existingHole.depth + 1}`)
+        console.log(`⛏️ Dug deeper! New depth: ${newDepth}m`)
       } else {
         // Create new hole
         const txSignature = await dig({ 
           x: Math.round(clickPos.x), 
           z: Math.round(clickPos.z) 
-        })
+        }, 1)
         
         const newHole: Hole = {
           id: Date.now().toString(),
@@ -69,8 +70,11 @@ export function Ground({ onDig }: GroundProps) {
       // Simulate item finding (5% chance)
       const foundItem = Math.random() < 0.05
       
+      // Get current max depth across all holes
+      const maxDepth = Math.max(...holes.map(h => h.depth), existingHole ? existingHole.depth + 1 : 1)
+      
       // Update parent stats
-      onDig?.(true, foundItem)
+      onDig?.(true, foundItem, maxDepth)
       
     } catch (error) {
       console.error('Dig failed:', error)
@@ -98,27 +102,66 @@ export function Ground({ onDig }: GroundProps) {
         />
       </mesh>
 
-      {/* Simple hole rendering */}
-      {holes.map(hole => (
-        <group key={hole.id}>
-          {/* Simple hole - dark circle on ground */}
-          <mesh
-            position={[hole.position.x, 0.01, hole.position.z]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          >
-            <circleGeometry args={[0.5, 16]} />
-            <meshBasicMaterial color="#2d1b11" />
-          </mesh>
-          
-          {/* Depth indicator - small sphere */}
-          {hole.depth > 1 && (
-            <mesh position={[hole.position.x, 0.3, hole.position.z]}>
-              <sphereGeometry args={[0.1]} />
-              <meshBasicMaterial color="#ffd23f" />
+      {/* 3D Holes going DOWN into the ground */}
+      {holes.map(hole => {
+        const holeDepth = hole.depth * 0.5; // Each dig = 0.5 units deep
+        const holeRadius = 0.3 + (hole.depth * 0.05); // Slightly wider as deeper
+        
+        return (
+          <group key={hole.id}>
+            {/* Actual 3D hole - cylinder going DOWN */}
+            <mesh
+              position={[hole.position.x, -holeDepth/2, hole.position.z]}
+            >
+              <cylinderGeometry args={[holeRadius, holeRadius * 0.8, holeDepth, 12]} />
+              <meshStandardMaterial 
+                color="#1a1208" 
+                transparent
+                opacity={0.9}
+              />
             </mesh>
-          )}
-        </group>
-      ))}
+            
+            {/* Hole opening rim - makes edge visible */}
+            <mesh
+              position={[hole.position.x, 0.02, hole.position.z]}
+              rotation={[-Math.PI / 2, 0, 0]}
+            >
+              <ringGeometry args={[holeRadius, holeRadius + 0.05, 16]} />
+              <meshStandardMaterial color="#3d2a11" />
+            </mesh>
+            
+            {/* Dark bottom of hole - creates depth illusion */}
+            <mesh
+              position={[hole.position.x, -holeDepth + 0.01, hole.position.z]}
+              rotation={[-Math.PI / 2, 0, 0]}
+            >
+              <circleGeometry args={[holeRadius * 0.8, 16]} />
+              <meshBasicMaterial color="#0d0802" />
+            </mesh>
+            
+            {/* Depth indicator floating above hole */}
+            {hole.depth > 1 && (
+              <mesh position={[hole.position.x, 0.4, hole.position.z + 0.3]}>
+                <sphereGeometry args={[0.08]} />
+                <meshBasicMaterial color="#ffd23f" />
+              </mesh>
+            )}
+            
+            {/* Dirt pile around hole edges */}
+            <mesh
+              position={[hole.position.x, 0.05, hole.position.z]}
+              rotation={[-Math.PI / 2, 0, 0]}
+            >
+              <ringGeometry args={[holeRadius + 0.05, holeRadius + 0.15, 16]} />
+              <meshStandardMaterial 
+                color="#6B5B3D" 
+                transparent
+                opacity={0.7}
+              />
+            </mesh>
+          </group>
+        );
+      })}
 
       {/* Digging effect */}
       {isDigging && (

@@ -66,23 +66,26 @@ export function useHoleDiggerProgram() {
     return 'mock_init_tx_signature'
   }
 
-  const dig = async (pos: {x: number, z: number}) => {
-    console.log(`⛏️ Mock: Digging at position (${pos.x.toFixed(1)}, ${pos.z.toFixed(1)})`)
+  const dig = async (pos: {x: number, z: number}, currentDepth: number = 1) => {
+    console.log(`⛏️ Mock: Digging at position (${pos.x.toFixed(1)}, ${pos.z.toFixed(1)}) - Depth ${currentDepth}`)
     
     // Simulate transaction confirmation delay
-    await new Promise(resolve => setTimeout(resolve, 800))
+    await new Promise(resolve => setTimeout(resolve, 600))
     
     // Generate realistic-looking transaction signature
     const mockSignature = 'hole_dig_' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
     
     console.log(`✅ Dig transaction confirmed: ${mockSignature}`)
+    console.log(`🕳️ Hole depth now: ${currentDepth}m (${currentDepth * 0.5}m deep)`)
     console.log('💰 Fee: 0.001 SOL deducted')
     
-    // Simulate random item discovery (5% chance)
-    if (Math.random() < 0.05) {
+    // Simulate random item discovery (5% chance, higher chance at deeper levels)
+    const itemChance = 0.05 + (currentDepth * 0.01); // Slightly better odds deeper
+    if (Math.random() < itemChance) {
       const items = ['Bronze Coin', 'Silver Gem', 'Gold Nugget', 'Diamond Crystal']
-      const foundItem = items[Math.floor(Math.random() * items.length)]
-      console.log(`🎉 Found item: ${foundItem}`)
+      const rarity = Math.min(Math.floor(currentDepth / 3), items.length - 1);
+      const foundItem = items[rarity];
+      console.log(`🎉 Found item at depth ${currentDepth}m: ${foundItem}`)
     }
     
     return mockSignature
