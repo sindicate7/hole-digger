@@ -1,39 +1,67 @@
-# Lust - R3F Scene Foundation 🎮
+# Lust - 3D Scene + Wallet Integration 🎮💳
 
-## Your Mission: Scene Setup & Player Movement
+## Your Mission: Frontend with Real Solana Integration
 
-### Tasks (Branch: `lust/r3f-scene-setup`)
+**⚡ DEPENDS ON: Sloth's devnet deployment**
 
-1. **Enhanced Player Movement**
-   - Improve WASD controls in `src/components/Player.tsx`
-   - Add smooth movement interpolation
-   - Implement third-person camera following
-   - Add camera controls (mouse look optional)
+### Tasks (Branch: `lust/3d-wallet-integration`)
 
-2. **Ground Improvements**
-   - Add dirt/grass texture to ground plane
-   - Make ground larger and more interesting
-   - Add some terrain variation (optional)
+1. **Phantom Wallet Connection** 🦌
+   - Install: `@solana/wallet-adapter-react @solana/wallet-adapter-wallets`
+   - Set up WalletProvider with Phantom adapter
+   - Add wallet connect/disconnect UI
+   - Configure for devnet cluster
 
-3. **Scene Polish** 
-   - Better lighting setup
-   - Add skybox or environment
-   - Position camera optimally for third-person view
+2. **Enhanced 3D Scene** (build on existing)
+   - Improve WASD movement (smooth, responsive)
+   - Polish third-person camera following
+   - Better ground texture and lighting
+   - Visual feedback for clickable areas
+
+3. **Dig Instruction Integration** ⛏️
+   - On ground click → call hole-digger program
+   - Build and send `dig` instruction 
+   - Handle transaction confirmation
+   - Show hole visualization on successful tx
+
+4. **Transaction Flow**
+   ```js
+   Click Ground → Get Phantom Signature → Send Tx → Wait Confirmation → Show Hole
+   ```
 
 ### Files to Work On
-- `app/src/components/Player.tsx` - WASD movement & camera
-- `app/src/components/Ground.tsx` - terrain texture
-- `app/src/components/Scene.tsx` - lighting & camera setup
+- `app/src/components/WalletProvider.tsx` - wallet setup
+- `app/src/components/Player.tsx` - enhanced movement
+- `app/src/components/Ground.tsx` - click → dig transaction
+- `app/src/hooks/useDigInstruction.tsx` - transaction logic
+- `app/src/utils/solana.tsx` - connection & program setup
+
+### Dependencies from Sloth
+- **Program ID** on devnet
+- **PDA derivation** details (game_state, player)  
+- **Instruction format** for dig calls
+- **Event structure** for parsing
 
 ### Success Criteria
-- ✅ Smooth WASD movement 
-- ✅ Third-person camera follows player
-- ✅ Ground has texture/visual appeal
-- ✅ Scene looks like the reference image
+- ✅ Wallet connects to devnet successfully
+- ✅ 3D scene has smooth movement and camera
+- ✅ Ground click triggers real Solana transaction
+- ✅ Hole appears after transaction confirmation
+- ✅ Error handling for failed transactions
 
-### Notes
-- Base structure is set up, focus on polish & movement
-- Check the reference image Tuna shared for visual goals
-- Coordinate with Greed for textures/assets
+### Technical Stack
+```js
+// Wallet Integration
+@solana/wallet-adapter-react
+@solana/web3.js
+@coral-xyz/anchor (client)
 
-**Target: Playable movement by 04:00 UTC** 🎯
+// 3D Scene (existing)
+@react-three/fiber
+@react-three/drei
+three.js
+```
+
+**ETA: 04:00 UTC (after Sloth deployment)** ⏰
+
+**You're building the user experience that makes blockchain feel magical! ✨**

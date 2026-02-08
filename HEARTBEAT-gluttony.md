@@ -1,49 +1,65 @@
-# Gluttony - Analytics & User Experience 📊
+# Gluttony - Frontend-Blockchain Integration 🔗
 
-## Your Mission: Metrics & UX Validation
+## Your Mission: Wire Frontend to Chain Events
 
-### Tasks (No dedicated branch - testing/UX focus)
+**⚡ DEPENDS ON: Sloth deployment + Lust frontend**
 
-1. **User Experience Testing**
-   - Test all interactions for intuitiveness
-   - Validate camera angles and movement feel
-   - Test dig feedback and visual clarity
-   - Assess overall game "juice" and satisfaction
+### Tasks (Branch: `gluttony/chain-integration`)
 
-2. **Performance Analytics**
-   - Set up FPS monitoring in HUD (optional)
-   - Track dig counts and player movement patterns
-   - Monitor asset loading times
-   - Test memory usage under extended play
+1. **Event Parsing System** 📡
+   - Listen for `DigEvent` and `ItemFound` events from program
+   - Parse event data and update UI state  
+   - Real-time event subscription via WebSocket
+   - Handle event ordering and deduplication
 
-3. **Game Balance**
-   - Test dig mechanics for satisfying feedback
-   - Validate hole sizes and placement logic
-   - Assess movement speed and camera follow
-   - Suggest UX improvements
+2. **Transaction Confirmation Handling** ✅
+   - Monitor transaction status (pending → confirmed → finalized)
+   - Show loading states during confirmation  
+   - Handle failed transactions gracefully
+   - Retry logic for network issues
 
-### Metrics to Track
-- **Performance**: FPS, memory usage, load times
-- **Engagement**: Clicks per minute, movement patterns
-- **Usability**: Time to understand controls, error rates
-- **Visual**: Asset loading success, texture quality
+3. **UI State Synchronization** 🔄
+   - Sync on-chain player state with UI
+   - Update dig counters from blockchain events
+   - Handle multiple players' events (if applicable)
+   - Cache recent state for performance
+
+4. **Integration Testing** 🧪
+   - End-to-end transaction flow testing
+   - Event parsing accuracy validation
+   - Performance under high event volume
+   - Error recovery scenarios
 
 ### Files to Work On
-- `app/src/components/Analytics.tsx` - metrics tracking
-- `app/src/components/Scene.tsx` - performance monitoring
-- `app/src/hooks/useMetrics.tsx` - custom analytics hook
-- Create UX testing notes in `UX-TESTING.md`
+- `app/src/hooks/useEventListener.tsx` - event subscription
+- `app/src/hooks/useTransactionStatus.tsx` - tx monitoring
+- `app/src/stores/gameState.tsx` - state management
+- `app/src/components/TransactionStatus.tsx` - UI feedback
+- `app/src/utils/eventParsing.tsx` - event processing
+
+### Integration Points
+- **From Sloth**: Event schemas, program ID, account structures
+- **From Lust**: Transaction sending, UI state hooks
+- **To Frontend**: Real-time updates, confirmation states
 
 ### Success Criteria
-- ✅ Game feels responsive and satisfying
-- ✅ Performance stays smooth during play
-- ✅ User interactions are intuitive
-- ✅ Visual feedback is clear and appealing
+- ✅ Events parsed correctly in real-time
+- ✅ UI updates immediately on transaction confirmation
+- ✅ Failed transactions handled without breaking UI
+- ✅ Multiple rapid clicks handled gracefully
+- ✅ State stays synchronized with blockchain
 
-### Testing Protocol
-1. Fresh user perspective (imagine first-time player)
-2. Extended play testing (5+ minutes)
-3. Performance monitoring during heavy use
-4. Cross-browser/device testing
+### Technical Architecture
+```js
+// Event Flow
+Solana Program → WebSocket → Event Parser → State Store → UI Components
 
-**Target: UX validation and metrics by morning** 🎯
+// State Management
+Zustand/Context for game state
+React Query for transaction status
+EventSource/WebSocket for real-time events
+```
+
+**ETA: 05:00 UTC (after Lust integration)** ⏰
+
+**You're the glue that makes Web3 feel seamless! 🧪**

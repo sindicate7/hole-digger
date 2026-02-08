@@ -1,44 +1,59 @@
-# Wrath - Code Review & Security 🛡️
+# Wrath - Security Review & Integration 🛡️⛓️
 
-## Your Mission: Quality Assurance & Testing
+## Your Mission: Security + Full-Stack Integration
 
-### Tasks (No dedicated branch - review others')
+### **🆕 EXPANDED ROLE - CRITICAL ASSIGNMENT**
+Taking over Gluttony's integration work + original security review
 
-1. **Code Reviews**
-   - Review PRs from Lust (scene/movement)
-   - Review PRs from Sloth (dig mechanics)  
-   - Review PRs from Greed (asset integration)
-   - Focus on performance, security, best practices
+### Tasks (Branch: `wrath/integration-security`)
 
-2. **Testing & Validation**
-   - Test movement controls (WASD responsiveness)
-   - Test dig mechanics (click accuracy, hole placement)
-   - Test asset loading (performance, memory usage)
-   - Browser compatibility testing
+1. **Security Review** (Priority 1)
+   - Audit Sloth's Anchor program for exploits
+   - Review wallet integration security
+   - Validate transaction signing flow
+   - Check for front-running vulnerabilities
+   - Test fee collection mechanisms
 
-3. **Performance Monitoring**
-   - Check FPS during gameplay
-   - Monitor memory usage with assets
-   - Test on different screen sizes
-   - Identify optimization opportunities
+2. **🆕 Frontend-to-Chain Integration** (Priority 1 - CRITICAL)
+   - Wire React frontend to deployed Anchor program
+   - Parse Solana transaction events → update UI state
+   - Handle transaction confirmations and errors
+   - Implement loading states during tx processing
+   - Test end-to-end flow: wallet → tx → hole appears
 
-### Areas to Focus On
-- **Input handling**: Smooth controls, no input lag
-- **Performance**: 60fps target, efficient rendering
-- **User experience**: Intuitive interactions
-- **Error handling**: Graceful asset loading failures
-- **Code quality**: TypeScript types, clean structure
+3. **Performance & Testing**
+   - Test transaction speeds and confirmation times
+   - Monitor gas/compute unit usage
+   - Validate error handling for failed transactions
+   - Cross-browser wallet compatibility
 
-### Tools & Metrics
-- Browser DevTools Performance tab
-- Three.js Stats for FPS monitoring  
-- Memory usage profiling
-- Mobile device testing (optional)
+### Files to Work On
+- `app/src/hooks/useSolanaProgram.tsx` - program interaction
+- `app/src/hooks/useDigTransaction.tsx` - dig tx handling
+- `app/src/components/Ground.tsx` - integrate real tx calls
+- `app/src/utils/eventParser.tsx` - parse on-chain events
+- Security review docs in `SECURITY.md`
+
+### Key Security Concerns
+- **Fee Bypassing**: Can users dig without paying 0.001 SOL?
+- **Account Spoofing**: Can users fake game_state or player accounts?
+- **Integer Issues**: Can dig counts overflow or go negative?
+- **Race Conditions**: What happens with rapid transactions?
+- **Wallet Security**: Is private key handling safe?
 
 ### Success Criteria
-- ✅ All features work smoothly
-- ✅ No major performance issues
-- ✅ Code follows React/Three.js best practices
-- ✅ User experience is polished
+- ✅ Anchor program audited for security issues
+- ✅ Frontend successfully calls dig instruction
+- ✅ UI updates when transactions confirm
+- ✅ Error handling works for failed transactions
+- ✅ End-to-end flow: click → tx → hole → explorer
+- ✅ No exploits found in program logic
 
-**Target: Ongoing reviews, final validation by morning** 🎯
+### Dependencies
+- **BLOCKED BY**: Sloth's devnet deployment
+- **WORKS WITH**: Lust for wallet integration
+- **REPLACES**: Gluttony's integration tasks
+
+**Target: Integration + security complete by 06:00 UTC** 🎯
+
+**You're now the bridge between frontend and blockchain!** ⛓️🚀

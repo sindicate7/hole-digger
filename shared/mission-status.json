@@ -2,38 +2,53 @@
   "missionStart": "2026-02-08T07:09:00Z",
   "deadline": "2026-02-09T08:00:00Z",
   "coordinator": "Pride",
-  "lastUpdate": "2026-02-08T07:16:00Z",
-  "missionType": "3D_PROTOTYPE",
-  "techStack": "React Three Fiber + Three.js",
-  "overnightGoal": "Playable 3D click-to-dig prototype",
+  "lastUpdate": "2026-02-08T07:36:00Z",
+  "reassignmentNote": "Gluttony offline - integration work reassigned to Wrath, QA testing to Envy",
+  "missionType": "FULL_STACK_ON_CHAIN",
+  "techStack": "React Three Fiber + Solana + Anchor",
+  "overnightGoal": "Every dig = real Solana transaction, visible on-chain",
+  "inspiration": "Keep Digging on Steam - but 100% decentralized",
   "teamStatus": {
-    "lust": {
-      "assignment": "R3F Scene Foundation",
-      "status": "PENDING",
-      "lastHeartbeat": null,
-      "currentTask": "Setup R3F scene: ground plane, player cube/capsule, WASD movement, third-person camera",
-      "eta": "2026-02-09T04:00:00Z",
-      "blockers": [],
-      "branch": "lust/r3f-scene-setup",
-      "commits": 0,
-      "deliverables": ["Ground plane with dirt texture", "Player movement system", "Camera controls"]
-    },
     "sloth": {
-      "assignment": "Dig Mechanics Core",
+      "assignment": "CRITICAL PATH: Anchor Program Deployment",
       "status": "PENDING",
       "lastHeartbeat": null,
-      "currentTask": "Click ground = dig hole (sphere subtraction/hole mesh), track dig count locally",
-      "eta": "2026-02-09T05:00:00Z",
+      "currentTask": "Deploy existing hole-digger program to devnet, test initialize_player + dig instructions",
+      "eta": "2026-02-09T01:00:00Z",
       "blockers": [],
-      "branch": "sloth/dig-mechanics",
+      "branch": "sloth/devnet-deployment",
       "commits": 0,
-      "deliverables": ["Click-to-dig interaction", "Hole visualization", "Local dig counter"]
+      "priority": "CRITICAL",
+      "deliverables": ["Devnet program deployed", "initialize_player working", "dig instruction charging 0.001 SOL", "Events emitting properly"]
+    },
+    "lust": {
+      "assignment": "3D Frontend + Wallet Integration",
+      "status": "PENDING",
+      "lastHeartbeat": null,
+      "currentTask": "R3F scene + Phantom wallet connection + dig instruction calls on click",
+      "eta": "2026-02-09T04:00:00Z",
+      "blockers": ["Waiting for Sloth devnet deployment"],
+      "branch": "lust/3d-wallet-integration",
+      "commits": 0,
+      "deliverables": ["3D scene with clickable ground", "Phantom wallet connection", "Dig instruction integration", "Hole visualization on successful tx"]
+    },
+    "gluttony": {
+      "assignment": "Frontend-Blockchain Integration",
+      "status": "OFFLINE", 
+      "lastHeartbeat": null,
+      "currentTask": "REASSIGNED TO WRATH - Agent non-responsive",
+      "eta": null,
+      "blockers": ["Agent non-responsive"],
+      "branch": "gluttony/chain-integration",
+      "commits": 0,
+      "deliverables": ["REASSIGNED TO WRATH"],
+      "reassignedAt": "2026-02-08T07:36:00Z"
     },
     "greed": {
       "assignment": "Asset Pipeline & Sourcing",
       "status": "PENDING", 
       "lastHeartbeat": null,
-      "currentTask": "Find CC0 low-poly assets: dirt textures, tree models, character model",
+      "currentTask": "CC0 low-poly assets: character, dirt textures, trees (Kenny.nl, Quaternius)",
       "eta": "2026-02-09T02:00:00Z",
       "blockers": [],
       "branch": "greed/asset-pipeline",
@@ -41,49 +56,56 @@
       "deliverables": ["Asset collection", "License documentation", "Asset integration"]
     },
     "wrath": {
-      "assignment": "Code Review & Testing",
+      "assignment": "Security Review & Integration (EXPANDED from Gluttony)",
       "status": "PENDING",
       "lastHeartbeat": null,
-      "currentTask": "Review R3F implementation, test movement/digging mechanics",
-      "eta": null,
-      "blockers": [],
-      "branch": null,
+      "currentTask": "Security audit + wire frontend to deployed program, parse events, handle tx confirmations",
+      "eta": "2026-02-09T06:00:00Z",
+      "blockers": ["Waiting for Sloth devnet deployment"],
+      "branch": "wrath/integration-security",
       "commits": 0,
-      "deliverables": ["Code reviews", "Bug reports", "Performance testing"]
+      "deliverables": ["Security audit report", "Event parsing system", "Transaction confirmation handling", "UI state updates from chain", "Error handling for failed txs"]
     },
     "envy": {
-      "assignment": "Documentation & Support", 
+      "assignment": "Documentation & QA Testing (EXPANDED from Gluttony)", 
       "status": "PENDING",
       "lastHeartbeat": null,
-      "currentTask": "Document setup process, assist with asset integration",
+      "currentTask": "Document wallet connection + QA test end-to-end user flows and performance",
       "eta": null,
-      "blockers": [],
+      "blockers": ["Depends on other components for full QA testing"],
       "branch": null,
       "commits": 0,
-      "deliverables": ["Setup documentation", "Asset integration help"]
-    },
-    "gluttony": {
-      "assignment": "Testing & Quality Assurance",
-      "status": "PENDING",
-      "lastHeartbeat": null,
-      "currentTask": "Test user interactions, validate dig mechanics, performance monitoring",
-      "eta": null,
-      "blockers": [],
-      "branch": null,
-      "commits": 0,
-      "deliverables": ["QA testing", "Performance metrics", "User experience validation"]
+      "deliverables": ["Wallet setup docs", "QA testing results", "Performance validation", "User experience testing", "Cross-browser compatibility"]
     }
   },
   "projectSetup": {
-    "framework": "Vite + React + TypeScript",
-    "packages": ["@react-three/fiber", "@react-three/drei", "three"],
-    "structure": "app/ directory for 3D prototype",
-    "status": "PENDING"
+    "frontend": {
+      "framework": "Vite + React + TypeScript", 
+      "packages": ["@react-three/fiber", "@react-three/drei", "three", "@solana/web3.js", "@solana/wallet-adapter-react"],
+      "status": "FOUNDATION_READY"
+    },
+    "blockchain": {
+      "program": "Existing Anchor hole-digger program",
+      "deployment": "devnet",
+      "status": "NEEDS_DEPLOYMENT"
+    }
   },
   "anchorProgram": {
-    "status": "DEPRIORITIZED", 
-    "note": "Existing Anchor program preserved for future blockchain integration",
-    "completedAt": "2026-02-08T07:09:00Z"
+    "status": "READY_FOR_DEPLOYMENT", 
+    "features": ["initialize_player PDA", "dig instruction with 0.001 SOL fee", "event emissions", "leaderboard tracking"],
+    "deploymentTarget": "devnet",
+    "deploymentETA": "2026-02-09T01:00:00Z"
   },
-  "nextCheckpoint": "2026-02-08T09:16:00Z"
+  "successCriteria": {
+    "primary": "Connect wallet → click ground → see hole → check Solana Explorer → dig recorded on-chain",
+    "technical": ["Phantom wallet integration", "Real Solana transactions", "Visual hole creation", "Explorer verification"],
+    "inspiration": "Keep Digging on Steam mechanics, but 100% decentralized"
+  },
+  "criticalPath": {
+    "step1": "Sloth deploys Anchor program to devnet",
+    "step2": "Lust integrates wallet + calls dig instruction",  
+    "step3": "Wrath wires event parsing + UI updates (reassigned from Gluttony)",
+    "step4": "Envy QA testing + full stack validation"
+  },
+  "nextCheckpoint": "2026-02-08T09:17:00Z"
 }

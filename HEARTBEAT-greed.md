@@ -1,51 +1,68 @@
-# Greed - Asset Pipeline & Sourcing 🎨
+# Greed - Asset Pipeline & Visual Polish 🎨
 
-## Your Mission: Low-Poly Asset Collection
+## Your Mission: Low-Poly Assets for On-Chain Game
 
 ### Tasks (Branch: `greed/asset-pipeline`)
 
-1. **Character Model**
-   - Find CC0 low-poly character (bear, human, robot)
-   - Should match reference image aesthetic
+1. **Character Model** 🐻
+   - Find CC0 low-poly character (matches Keep Digging aesthetic)
+   - Bear, miner, or robot character preferred  
    - Convert to .glb/.gltf format for Three.js
    - Replace cube player in `Player.tsx`
+   - Animate idle/walking states (optional)
 
-2. **Environment Assets**
-   - Low-poly tree models (various sizes)
+2. **Environment Assets** 🌲
+   - Low-poly tree models (various sizes, forest feel)
    - Rock/stone models for ground scatter
-   - Dirt/grass textures for ground
-   - Sky/environment textures
+   - Dirt/grass textures with good tiling
+   - Treasure chest models (for future NFT items)
 
-3. **Asset Integration**
-   - Create `assets/` folder structure
-   - Document licenses and sources
-   - Create asset loading utilities
-   - Test assets work in scene
+3. **Blockchain Visual Elements** 💎
+   - Digging tool models (shovel, pickaxe)
+   - Treasure/gem models (bronze, silver, gold, diamond)
+   - Hole visualization assets
+   - Transaction success/pending indicators
 
-### Asset Sources (CC0 License)
-- **Kenny Assets**: https://kenney.nl/assets
-- **Quaternius**: https://quaternius.com/packs.html
+4. **Asset Integration** 🔧
+   - Create organized `assets/` folder structure
+   - Optimize file sizes for web loading
+   - Test assets work in React Three Fiber
+   - Document licenses and attribution
+
+### Asset Sources (CC0 License Required)
+- **Kenny Assets**: https://kenney.nl/assets (excellent low-poly packs)
+- **Quaternius**: https://quaternius.com/packs.html (RPG/adventure assets)
 - **Sketchfab CC0**: https://sketchfab.com/features/free-3d-models
 - **OpenGameArt**: https://opengameart.org
 
 ### Files to Work On
-- `app/src/assets/` - create asset folders
+- `app/src/assets/` - create organized asset folders
 - `app/src/components/Player.tsx` - integrate character model
-- `app/src/components/Environment.tsx` - trees, rocks
-- `app/src/utils/assetLoader.tsx` - loading utilities
-- `ASSETS.md` - document sources and licenses
+- `app/src/components/Environment.tsx` - trees, rocks, atmosphere
+- `app/src/components/Treasures.tsx` - gem/treasure models
+- `ASSETS.md` - document sources, licenses, usage
 
 ### Success Criteria  
-- ✅ Character model replaces cube player
-- ✅ Trees and rocks scattered in scene
-- ✅ Ground has appealing texture
-- ✅ Scene matches low-poly aesthetic from reference
-- ✅ All assets properly licensed (CC0)
+- ✅ Character model replaces cube (looks like Keep Digging)
+- ✅ Environment feels alive with trees, rocks, atmosphere
+- ✅ Ground texture is appealing and fits aesthetic
+- ✅ Treasure models ready for blockchain integration
+- ✅ All assets properly licensed (CC0) and attributed
 
 ### Priority Order
-1. **Character model** (highest impact)
-2. **Ground texture** (visual foundation)  
-3. **Tree models** (scene depth)
-4. **Rocks/props** (scene detail)
+1. **Character model** (immediate visual impact)
+2. **Ground texture** (foundation for everything)  
+3. **Tree models** (environment depth)
+4. **Treasure models** (blockchain integration ready)
+5. **Atmosphere/polish** (lighting, skybox)
 
-**Target: Assets integrated by 02:00 UTC** 🎯
+### Keep Digging Inspiration
+- Chunky, low-poly aesthetic
+- Earth tones (browns, greens)
+- Cozy underground mining feel
+- Clear visual hierarchy
+- Satisfying dig feedback
+
+**Target: Assets integrated by 02:00 UTC** ⏰
+
+**You're building the visual world that makes blockchain gaming delightful! ✨**

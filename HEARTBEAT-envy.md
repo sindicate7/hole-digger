@@ -1,44 +1,65 @@
-# Envy - Documentation & Support 📚
+# Envy - Documentation & QA Testing 📚🧪
 
-## Your Mission: Documentation & Team Support
+## Your Mission: Documentation + Quality Assurance
 
-### Tasks (No dedicated branch - create docs)
+### **🆕 EXPANDED ROLE - CRITICAL ASSIGNMENT**
+Taking over Gluttony's QA testing + original documentation work
+
+### Tasks (No dedicated branch - create docs & test)
 
 1. **Setup Documentation**
    - Create detailed `SETUP.md` for local development
-   - Document asset pipeline process
+   - Document wallet connection process (Phantom)
    - Create troubleshooting guide for common issues
    - Document keyboard controls and game mechanics
 
-2. **Asset Integration Support**
+2. **🆕 QA Testing & User Experience** (Priority 1)
+   - Test end-to-end user flow: wallet → click → tx → hole
+   - Validate transaction confirmation feedback
+   - Test cross-browser wallet compatibility  
+   - Performance testing: FPS during gameplay
+   - Mobile responsiveness testing
+   - User experience validation
+
+3. **Asset Integration Support**
    - Help Greed with asset loading issues
    - Test asset performance across devices
    - Validate asset licensing compliance
    - Create asset usage guidelines
 
-3. **Team Coordination**
-   - Monitor team progress in shared channels
-   - Help resolve merge conflicts
-   - Assist with technical blockers
-   - Document decisions and changes
-
 ### Files to Create
-- `SETUP.md` - development setup guide
-- `CONTROLS.md` - player controls documentation  
+- `SETUP.md` - development + wallet setup guide
+- `CONTROLS.md` - player controls + wallet interactions
 - `ASSETS.md` - asset sources and licenses
-- `TROUBLESHOOTING.md` - common issues and fixes
-- Update main `README.md` with team progress
+- `QA-TESTING.md` - testing results and user feedback
+- `TROUBLESHOOTING.md` - common wallet/tx issues
+- Update main `README.md` with progress
+
+### QA Testing Protocol
+1. **User Journey Testing**
+   - Fresh user perspective (first-time wallet connection)
+   - Time-to-first-dig measurement
+   - Error handling validation
+   
+2. **Performance Testing**
+   - Frame rate monitoring during play
+   - Transaction confirmation times
+   - Memory usage with 3D assets
+   
+3. **Cross-Platform Testing**
+   - Chrome, Firefox, Safari compatibility
+   - Different wallet providers (if time)
+   - Mobile browser testing
 
 ### Success Criteria
-- ✅ New developers can set up project easily
-- ✅ All controls and mechanics documented
-- ✅ Asset pipeline clearly explained
-- ✅ Team blockers resolved quickly
+- ✅ Complete user journey works smoothly
+- ✅ Documentation enables easy setup
+- ✅ Performance meets 60fps target
+- ✅ Wallet integration is intuitive
+- ✅ All edge cases handled gracefully
 
-### Support Areas
-- Help with Three.js/React integration issues
-- Asset format conversion (if needed)
-- Git workflow assistance
-- Testing across different environments
+### Dependencies
+- **DEPENDS ON**: Sloth (devnet), Lust (wallet), Wrath (integration)
+- **REPLACES**: Gluttony's QA tasks
 
-**Target: Complete documentation by morning** 🎯
+**Target: Documentation + QA complete by morning** 🎯
