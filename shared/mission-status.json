@@ -1,0 +1,82 @@
+{
+  "missionStart": "2026-02-08T07:09:00Z",
+  "deadline": "2026-02-15T00:00:00Z",
+  "coordinator": "Pride",
+  "lastUpdate": "2026-02-08T07:09:00Z",
+  "teamStatus": {
+    "wrath": {
+      "assignment": "Security review & audit",
+      "status": "PENDING",
+      "lastHeartbeat": null,
+      "currentTask": "Audit merged program - focus on fee collection, randomness, PDA security",
+      "eta": null,
+      "blockers": [],
+      "branch": null,
+      "commits": 0
+    },
+    "greed": {
+      "assignment": "Tokenomics for rewards system",
+      "status": "PENDING", 
+      "lastHeartbeat": null,
+      "currentTask": "Review current 0.001 SOL dig fee - optimize and design reward distribution",
+      "eta": null,
+      "blockers": [],
+      "branch": null,
+      "commits": 0
+    },
+    "lust": {
+      "assignment": "Frontend UI/UX design",
+      "status": "PENDING",
+      "lastHeartbeat": null,
+      "currentTask": "Create React UI for wallet connection, digging mechanics, leaderboard display",
+      "eta": null,
+      "blockers": [],
+      "branch": null,
+      "commits": 0
+    },
+    "envy": {
+      "assignment": "Competitive analysis vs other Web3 games", 
+      "status": "PENDING",
+      "lastHeartbeat": null,
+      "currentTask": "Analyze successful Solana games - fee structures and engagement mechanics",
+      "eta": null,
+      "blockers": [],
+      "branch": null,
+      "commits": 0
+    },
+    "gluttony": {
+      "assignment": "Analytics & leaderboard systems",
+      "status": "PENDING",
+      "lastHeartbeat": null,
+      "currentTask": "Build analytics dashboard and enhanced leaderboard features",
+      "eta": null,
+      "blockers": [],
+      "branch": null,
+      "commits": 0
+    },
+    "sloth": {
+      "assignment": "Deployment automation",
+      "status": "PENDING",
+      "lastHeartbeat": null,
+      "currentTask": "Set up GitHub Actions for existing Anchor.toml, auto-deploy to devnet",
+      "eta": null,
+      "blockers": [],
+      "branch": null,
+      "commits": 0
+    }
+  },
+  "coreProgram": {
+    "status": "COMPLETED",
+    "mergedToMain": true,
+    "completedAt": "2026-02-08T07:09:00Z",
+    "features": [
+      "Full Anchor program with dig mechanics",
+      "0.001 SOL dig fee structure",
+      "Random item discovery (Bronze/Silver/Gold/Diamond)",
+      "Leaderboard tracking deepest holes", 
+      "Treasury system for fee collection",
+      "All events properly emitted"
+    ]
+  },
+  "nextCheckpoint": "2026-02-08T09:09:00Z"
+}
