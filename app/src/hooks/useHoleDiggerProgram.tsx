@@ -52,15 +52,46 @@ export function useHoleDiggerProgram() {
 }
 */
 
-// PLACEHOLDER - Complete after deployment
+// Enhanced mock system for demo
 export function useHoleDiggerProgram() {
+  const mockWallet = {
+    publicKey: '43fiGdJNVyF4Sue7xq76qixuu8FcoYYVsFiFt3ZJXh5g',
+    connected: true
+  }
+
+  const initializePlayer = async () => {
+    console.log('🎮 Mock: Initializing player account...')
+    await new Promise(resolve => setTimeout(resolve, 1000)) // Simulate network delay
+    console.log('✅ Player account created')
+    return 'mock_init_tx_signature'
+  }
+
+  const dig = async (pos: {x: number, z: number}) => {
+    console.log(`⛏️ Mock: Digging at position (${pos.x.toFixed(1)}, ${pos.z.toFixed(1)})`)
+    
+    // Simulate transaction confirmation delay
+    await new Promise(resolve => setTimeout(resolve, 800))
+    
+    // Generate realistic-looking transaction signature
+    const mockSignature = 'hole_dig_' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+    
+    console.log(`✅ Dig transaction confirmed: ${mockSignature}`)
+    console.log('💰 Fee: 0.001 SOL deducted')
+    
+    // Simulate random item discovery (5% chance)
+    if (Math.random() < 0.05) {
+      const items = ['Bronze Coin', 'Silver Gem', 'Gold Nugget', 'Diamond Crystal']
+      const foundItem = items[Math.floor(Math.random() * items.length)]
+      console.log(`🎉 Found item: ${foundItem}`)
+    }
+    
+    return mockSignature
+  }
+
   return {
-    initializePlayer: async () => console.log('Mock: Initialize player'),
-    dig: async (pos: {x: number, z: number}) => {
-      console.log('Mock: Digging at', pos)
-      return 'mock_tx_signature'
-    },
-    programId: null,
-    wallet: null
+    initializePlayer,
+    dig,
+    programId: 'HFUXiy65z7Fumb5AS2NA7CnktMgrkZa5CZtrcP6qHPqp',
+    wallet: mockWallet
   }
 }
