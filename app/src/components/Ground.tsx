@@ -98,33 +98,22 @@ export function Ground({ onDig }: GroundProps) {
         />
       </mesh>
 
-      {/* Render holes with depth visualization */}
+      {/* Simple hole rendering */}
       {holes.map(hole => (
         <group key={hole.id}>
-          {/* Hole opening */}
+          {/* Simple hole - dark circle on ground */}
           <mesh
-            position={[hole.position.x, -0.05, hole.position.z]}
+            position={[hole.position.x, 0.01, hole.position.z]}
             rotation={[-Math.PI / 2, 0, 0]}
           >
-            <cylinderGeometry args={[0.6, 0.4, 0.1, 12]} />
-            <meshStandardMaterial color="#2d1b11" />
+            <circleGeometry args={[0.5, 16]} />
+            <meshBasicMaterial color="#2d1b11" />
           </mesh>
           
-          {/* Depth visualization - darker cylinder for deeper holes */}
-          <mesh
-            position={[hole.position.x, -0.1 - (hole.depth * 0.1), hole.position.z]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          >
-            <cylinderGeometry args={[0.4, 0.2, hole.depth * 0.2, 8]} />
-            <meshStandardMaterial 
-              color={`hsl(${Math.max(0, 30 - hole.depth * 3)}, 40%, ${Math.max(10, 25 - hole.depth * 2)}%)`}
-            />
-          </mesh>
-
-          {/* Depth indicator text (floating above hole) */}
+          {/* Depth indicator - small sphere */}
           {hole.depth > 1 && (
-            <mesh position={[hole.position.x, 0.5, hole.position.z]}>
-              <textGeometry args={[`${hole.depth}`, { size: 0.3, height: 0.02 }]} />
+            <mesh position={[hole.position.x, 0.3, hole.position.z]}>
+              <sphereGeometry args={[0.1]} />
               <meshBasicMaterial color="#ffd23f" />
             </mesh>
           )}

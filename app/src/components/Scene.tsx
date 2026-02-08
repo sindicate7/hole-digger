@@ -10,23 +10,27 @@ interface SceneProps {
 export function Scene({ onDig }: SceneProps) {
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
-      <Canvas camera={{ position: [0, 8, 12], fov: 60 }}>
-        <ambientLight intensity={0.4} />
-        <directionalLight position={[10, 10, 5]} intensity={1.2} castShadow />
+      <Canvas 
+        camera={{ position: [5, 5, 5], fov: 75 }}
+        gl={{ antialias: true }}
+      >
+        <ambientLight intensity={0.6} />
+        <directionalLight position={[10, 10, 5]} intensity={1} />
         
-        {/* Environment */}
-        <Environment preset="sunset" />
+        {/* Simple sky color instead of Environment preset */}
+        <color attach="background" args={['#87CEEB']} />
         
         {/* Game Objects */}
         <Ground onDig={onDig} />
         <Player />
         
-        {/* Camera Controls (for development - can be removed later) */}
+        {/* Simplified camera controls */}
         <OrbitControls 
-          enablePan={false}
-          minDistance={5}
-          maxDistance={20}
-          maxPolarAngle={Math.PI / 2.2}
+          target={[0, 0, 0]}
+          enablePan={true}
+          minDistance={3}
+          maxDistance={15}
+          maxPolarAngle={Math.PI / 2}
         />
       </Canvas>
     </div>

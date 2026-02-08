@@ -65,7 +65,7 @@ export function Player() {
     if (!meshRef.current) return
 
     // Movement speed
-    const speed = 5 * delta
+    const speed = 3 * delta
 
     // Update position based on keys
     if (keys.current.w) position.current.z -= speed
@@ -73,16 +73,11 @@ export function Player() {
     if (keys.current.a) position.current.x -= speed
     if (keys.current.d) position.current.x += speed
 
+    // Keep player on ground
+    position.current.y = 0.5
+
     // Apply position to mesh
     meshRef.current.position.copy(position.current)
-
-    // TODO (Lust): Update camera to follow player
-    // state.camera.position.set(
-    //   position.current.x + 5,
-    //   position.current.y + 5,
-    //   position.current.z + 10
-    // )
-    // state.camera.lookAt(position.current)
   })
 
   return (
