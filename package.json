@@ -1,0 +1,35 @@
+{
+  "name": "hole-digger",
+  "version": "0.1.0",
+  "description": "100% on-chain Solana digging game",
+  "main": "index.js",
+  "scripts": {
+    "build": "anchor build",
+    "test": "anchor test --skip-local-validator",
+    "deploy": "anchor deploy",
+    "start-validator": "solana-test-validator",
+    "dev": "concurrently \"npm run start-validator\" \"cd app && npm start\""
+  },
+  "dependencies": {
+    "@project-serum/anchor": "^0.30.1",
+    "@solana/web3.js": "^1.95.2"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.0",
+    "@types/mocha": "^9.1.0",
+    "chai": "^4.3.4",
+    "concurrently": "^8.2.0",
+    "mocha": "^9.2.0",
+    "ts-mocha": "^10.0.0",
+    "typescript": "^4.9.0"
+  },
+  "keywords": [
+    "solana",
+    "blockchain",
+    "game",
+    "web3",
+    "anchor"
+  ],
+  "author": "Seven Sins Team",
+  "license": "MIT"
+}
