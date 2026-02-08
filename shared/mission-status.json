@@ -1,82 +1,89 @@
 {
   "missionStart": "2026-02-08T07:09:00Z",
-  "deadline": "2026-02-15T00:00:00Z",
+  "deadline": "2026-02-09T08:00:00Z",
   "coordinator": "Pride",
-  "lastUpdate": "2026-02-08T07:09:00Z",
+  "lastUpdate": "2026-02-08T07:16:00Z",
+  "missionType": "3D_PROTOTYPE",
+  "techStack": "React Three Fiber + Three.js",
+  "overnightGoal": "Playable 3D click-to-dig prototype",
   "teamStatus": {
-    "wrath": {
-      "assignment": "Security review & audit",
-      "status": "PENDING",
-      "lastHeartbeat": null,
-      "currentTask": "Audit merged program - focus on fee collection, randomness, PDA security",
-      "eta": null,
-      "blockers": [],
-      "branch": null,
-      "commits": 0
-    },
-    "greed": {
-      "assignment": "Tokenomics for rewards system",
-      "status": "PENDING", 
-      "lastHeartbeat": null,
-      "currentTask": "Review current 0.001 SOL dig fee - optimize and design reward distribution",
-      "eta": null,
-      "blockers": [],
-      "branch": null,
-      "commits": 0
-    },
     "lust": {
-      "assignment": "Frontend UI/UX design",
+      "assignment": "R3F Scene Foundation",
       "status": "PENDING",
       "lastHeartbeat": null,
-      "currentTask": "Create React UI for wallet connection, digging mechanics, leaderboard display",
-      "eta": null,
+      "currentTask": "Setup R3F scene: ground plane, player cube/capsule, WASD movement, third-person camera",
+      "eta": "2026-02-09T04:00:00Z",
       "blockers": [],
-      "branch": null,
-      "commits": 0
-    },
-    "envy": {
-      "assignment": "Competitive analysis vs other Web3 games", 
-      "status": "PENDING",
-      "lastHeartbeat": null,
-      "currentTask": "Analyze successful Solana games - fee structures and engagement mechanics",
-      "eta": null,
-      "blockers": [],
-      "branch": null,
-      "commits": 0
-    },
-    "gluttony": {
-      "assignment": "Analytics & leaderboard systems",
-      "status": "PENDING",
-      "lastHeartbeat": null,
-      "currentTask": "Build analytics dashboard and enhanced leaderboard features",
-      "eta": null,
-      "blockers": [],
-      "branch": null,
-      "commits": 0
+      "branch": "lust/r3f-scene-setup",
+      "commits": 0,
+      "deliverables": ["Ground plane with dirt texture", "Player movement system", "Camera controls"]
     },
     "sloth": {
-      "assignment": "Deployment automation",
+      "assignment": "Dig Mechanics Core",
       "status": "PENDING",
       "lastHeartbeat": null,
-      "currentTask": "Set up GitHub Actions for existing Anchor.toml, auto-deploy to devnet",
+      "currentTask": "Click ground = dig hole (sphere subtraction/hole mesh), track dig count locally",
+      "eta": "2026-02-09T05:00:00Z",
+      "blockers": [],
+      "branch": "sloth/dig-mechanics",
+      "commits": 0,
+      "deliverables": ["Click-to-dig interaction", "Hole visualization", "Local dig counter"]
+    },
+    "greed": {
+      "assignment": "Asset Pipeline & Sourcing",
+      "status": "PENDING", 
+      "lastHeartbeat": null,
+      "currentTask": "Find CC0 low-poly assets: dirt textures, tree models, character model",
+      "eta": "2026-02-09T02:00:00Z",
+      "blockers": [],
+      "branch": "greed/asset-pipeline",
+      "commits": 0,
+      "deliverables": ["Asset collection", "License documentation", "Asset integration"]
+    },
+    "wrath": {
+      "assignment": "Code Review & Testing",
+      "status": "PENDING",
+      "lastHeartbeat": null,
+      "currentTask": "Review R3F implementation, test movement/digging mechanics",
       "eta": null,
       "blockers": [],
       "branch": null,
-      "commits": 0
+      "commits": 0,
+      "deliverables": ["Code reviews", "Bug reports", "Performance testing"]
+    },
+    "envy": {
+      "assignment": "Documentation & Support", 
+      "status": "PENDING",
+      "lastHeartbeat": null,
+      "currentTask": "Document setup process, assist with asset integration",
+      "eta": null,
+      "blockers": [],
+      "branch": null,
+      "commits": 0,
+      "deliverables": ["Setup documentation", "Asset integration help"]
+    },
+    "gluttony": {
+      "assignment": "Testing & Quality Assurance",
+      "status": "PENDING",
+      "lastHeartbeat": null,
+      "currentTask": "Test user interactions, validate dig mechanics, performance monitoring",
+      "eta": null,
+      "blockers": [],
+      "branch": null,
+      "commits": 0,
+      "deliverables": ["QA testing", "Performance metrics", "User experience validation"]
     }
   },
-  "coreProgram": {
-    "status": "COMPLETED",
-    "mergedToMain": true,
-    "completedAt": "2026-02-08T07:09:00Z",
-    "features": [
-      "Full Anchor program with dig mechanics",
-      "0.001 SOL dig fee structure",
-      "Random item discovery (Bronze/Silver/Gold/Diamond)",
-      "Leaderboard tracking deepest holes", 
-      "Treasury system for fee collection",
-      "All events properly emitted"
-    ]
+  "projectSetup": {
+    "framework": "Vite + React + TypeScript",
+    "packages": ["@react-three/fiber", "@react-three/drei", "three"],
+    "structure": "app/ directory for 3D prototype",
+    "status": "PENDING"
   },
-  "nextCheckpoint": "2026-02-08T09:09:00Z"
+  "anchorProgram": {
+    "status": "DEPRIORITIZED", 
+    "note": "Existing Anchor program preserved for future blockchain integration",
+    "completedAt": "2026-02-08T07:09:00Z"
+  },
+  "nextCheckpoint": "2026-02-08T09:16:00Z"
 }

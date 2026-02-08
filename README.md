@@ -1,44 +1,51 @@
-# 🕳️ Hole Digger - 100% On-Chain Solana Game
+# 🕳️ Hole Digger - 3D Prototype
 
-## Concept
-Connect wallet, enter a yard, and dig a hole. Every dig action is recorded on-chain.
-
-## Game Mechanics
-- Each dig = 1 depth unit
-- Small fee per dig (0.001 SOL) goes to treasury
-- Random chance to find "items" (bronze, silver, gold, diamond NFTs)
-- Global leaderboard showing deepest diggers
-- Player state tracks hole depth & total digs
+## Overview
+A playable 3D hole digging game built with React Three Fiber. Click to dig holes in a low-poly world.
 
 ## Tech Stack
-- **Backend:** Anchor/Rust for Solana program
-- **Frontend:** React + @solana/web3.js
-- **Wallet:** Phantom/Solflare adapter
-- **Network:** Devnet first, then mainnet
+- **Frontend:** React + TypeScript + Vite
+- **3D Engine:** Three.js + React Three Fiber + Drei
+- **Aesthetic:** Low-poly, minimalist design
+- **Camera:** Third-person following player
 
-## Repository Structure
+## Overnight MVP Goals
+
+### 🎮 Core Features
+- [x] ~~Vite + React + TypeScript setup~~
+- [ ] **R3F Scene** (Lust): Ground plane, player character, WASD movement, camera
+- [ ] **Dig Mechanics** (Sloth): Click-to-dig holes, local dig counter
+- [ ] **Assets** (Greed): Low-poly textures, tree models, character model
+
+### 🎯 Success Criteria
+**"I want to click and dig holes in a 3D world when I wake up"** - Tuna
+
+## Development Setup
+
+```bash
+cd app/
+npm install
+npm run dev
 ```
-├── programs/
-│   └── hole-digger/           # Anchor program (Rust)
-├── app/                       # React frontend
-├── tests/                     # Integration tests
-├── migrations/                # Deployment scripts
-└── docs/                      # Game documentation
-```
 
-## Development Team
-- **Pride:** Project coordination & code review
-- **Wrath:** Security review & audit
-- **Greed:** Tokenomics for rewards system  
-- **Lust:** Frontend UI/UX design
-- **Envy:** Competitive analysis vs other Web3 games
-- **Gluttony:** Analytics & leaderboard systems
-- **Sloth:** Deployment automation
+## Team Assignments
 
-## Mission Status
-🚀 **ACTIVE** - Assigned 2026-02-08  
-🎯 **Priority:** CRITICAL  
-⏰ **Deadline:** 2026-02-15  
+| Role | Member | Task | Branch | ETA |
+|------|---------|------|---------|-----|
+| **Scene Setup** | Lust | R3F foundation, movement, camera | `lust/r3f-scene-setup` | 04:00 UTC |
+| **Dig Mechanics** | Sloth | Click-to-dig, hole visualization | `sloth/dig-mechanics` | 05:00 UTC |
+| **Assets** | Greed | CC0 low-poly models/textures | `greed/asset-pipeline` | 02:00 UTC |
+| **QA/Review** | Wrath, Envy, Gluttony | Code review, testing, docs | - | Ongoing |
+
+## Asset Sources
+- **Kenny Assets**: https://kenney.nl/assets (CC0)
+- **Quaternius**: https://quaternius.com/packs.html (CC0)
+- **Sketchfab CC0**: https://sketchfab.com/features/free-3d-models
+
+## Protocol
+- **30min cycles**: Pull → Work → Commit → Push
+- **Silent mode**: GitHub commits over Discord chatter
+- **Coordination**: Pride monitors via GitHub API
 
 ---
-*Seven Sins working together to build the most addictive on-chain game on Solana* 🔥
+*Target: Playable 3D prototype by morning* 🌅
