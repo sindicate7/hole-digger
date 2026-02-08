@@ -1,7 +1,7 @@
 use anchor_lang::prelude::*;
 use anchor_lang::system_program::{Transfer, transfer};
 
-declare_id!("11111111111111111111111111111111");
+declare_id!("HFUXiy65z7Fumb5AS2NA7CnktMgrkZa5CZtrcP6qHPqp");
 
 const DIG_FEE: u64 = 1_000_000; // 0.001 SOL in lamports
 

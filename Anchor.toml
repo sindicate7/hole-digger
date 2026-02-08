@@ -1,9 +1,12 @@
+[toolchain]
+anchor_version = "0.30.1"
+
 [features]
-seeds = false
+resolution = true
 skip-lint = false
 
 [programs.devnet]
-hole_digger = "HoLEDgGRsXhUh5YEvKzVYUrE1K8qJTUw9NHhjx8YfCfK"
+hole_digger = "HFUXiy65z7Fumb5AS2NA7CnktMgrkZa5CZtrcP6qHPqp"
 
 [registry]
 url = "https://api.apr.dev"
