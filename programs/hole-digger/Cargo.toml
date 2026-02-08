@@ -1,0 +1,20 @@
+[package]
+name = "hole-digger"
+version = "0.1.0"
+description = "100% on-chain Solana digging game"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "hole_digger"
+
+[dependencies]
+anchor-lang = "0.30.1"
+anchor-spl = "0.30.1"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
